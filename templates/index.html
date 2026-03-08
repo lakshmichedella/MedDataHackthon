@@ -3,367 +3,297 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MedData Hackathon Project</title>
+    <title>Heart Disease Risk Predictor</title>
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
   </head>
+
   <body>
-    <div class="container my-5">
-      <h1>Inputs:</h1>
-      <form action="/submit" method="post" name="MLmodelinput" class="mt-5">
-        <div class="row my-3">
-          <div class="col">
-            <label for="age" class="form-label">Age: </label>
-            <input
-              type="number"
-              id="age"
-              name="age"
-              class="form-control"
-              required
-            />
-          </div>
-          <div class="col d-flex flex-column">
-            <label for="sex" class="form-label">Sex: </label>
-            <div class="btn-group" role="group" aria-label="Selection options">
-              <input
-                type="radio"
-                class="btn-check"
-                name="sex"
-                id="male"
-                autocomplete="off"
-                value="1"
-                checked
-              />
-              <label class="btn btn-outline-primary" for="male">Male</label>
+    <div class="page-shell">
+      <div class="container py-5">
+        <div class="hero-card mb-4">
+          <div class="hero-badge">Medical Datathon Project</div>
+          <h1 class="hero-title">Heart Disease Risk Predictor</h1>
+          <p class="hero-text">
+            Enter patient clinical values below to estimate predicted heart disease risk
+            using your trained machine learning model.
+          </p>
+        </div>
 
-              <input
-                type="radio"
-                class="btn-check"
-                name="sex"
-                id="female"
-                value="0"
-                autocomplete="off"
-              />
-              <label class="btn btn-outline-primary" for="female">Female</label>
+        <div class="row g-4">
+          <div class="col-lg-8">
+            <div class="form-card">
+              <div class="section-heading">
+                <h2>Patient Inputs</h2>
+                <p>Fill in the clinical features required by the model.</p>
+              </div>
+
+              <form action="/submit" method="post" name="MLmodelinput">
+                <div class="form-section">
+                  <h3>Basic Information</h3>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label for="age" class="form-label">Age</label>
+                      <input
+                        type="number"
+                        id="age"
+                        name="age"
+                        class="form-control custom-input"
+                        min="1"
+                        required
+                      />
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label">Sex</label>
+                      <div class="btn-group w-100 segmented" role="group">
+                        <input
+                          type="radio"
+                          class="btn-check"
+                          name="sex"
+                          id="male"
+                          autocomplete="off"
+                          value="1"
+                          checked
+                        />
+                        <label class="btn btn-outline-primary" for="male">Male</label>
+
+                        <input
+                          type="radio"
+                          class="btn-check"
+                          name="sex"
+                          id="female"
+                          value="0"
+                          autocomplete="off"
+                        />
+                        <label class="btn btn-outline-primary" for="female">Female</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-section">
+                  <h3>Symptoms & Resting Measures</h3>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label">Chest Pain Type (cp)</label>
+                      <div class="btn-group w-100 segmented" role="group">
+                        <input type="radio" class="btn-check" name="cp" id="cp-1" value="1" checked />
+                        <label class="btn btn-outline-primary" for="cp-1">1</label>
+
+                        <input type="radio" class="btn-check" name="cp" id="cp-2" value="2" />
+                        <label class="btn btn-outline-primary" for="cp-2">2</label>
+
+                        <input type="radio" class="btn-check" name="cp" id="cp-3" value="3" />
+                        <label class="btn btn-outline-primary" for="cp-3">3</label>
+
+                        <input type="radio" class="btn-check" name="cp" id="cp-4" value="4" />
+                        <label class="btn btn-outline-primary" for="cp-4">4</label>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="trestbps" class="form-label">Resting Blood Pressure (trestbps)</label>
+                      <input
+                        type="number"
+                        id="trestbps"
+                        name="trestbps"
+                        class="form-control custom-input"
+                        min="0"
+                        required
+                      />
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="chol" class="form-label">Serum Cholesterol (chol)</label>
+                      <input
+                        type="number"
+                        id="chol"
+                        name="chol"
+                        class="form-control custom-input"
+                        min="0"
+                        required
+                      />
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label">Fasting Blood Sugar (fbs)</label>
+                      <div class="btn-group w-100 segmented" role="group">
+                        <input type="radio" class="btn-check" name="fbs" id="fbs-0" value="0" checked />
+                        <label class="btn btn-outline-primary" for="fbs-0">0</label>
+
+                        <input type="radio" class="btn-check" name="fbs" id="fbs-1" value="1" />
+                        <label class="btn btn-outline-primary" for="fbs-1">1</label>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label">Resting ECG (restecg)</label>
+                      <div class="btn-group w-100 segmented" role="group">
+                        <input type="radio" class="btn-check" name="restecg" id="restecg-0" value="0" checked />
+                        <label class="btn btn-outline-primary" for="restecg-0">0</label>
+
+                        <input type="radio" class="btn-check" name="restecg" id="restecg-1" value="1" />
+                        <label class="btn btn-outline-primary" for="restecg-1">1</label>
+
+                        <input type="radio" class="btn-check" name="restecg" id="restecg-2" value="2" />
+                        <label class="btn btn-outline-primary" for="restecg-2">2</label>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="thalach" class="form-label">Maximum Heart Rate (thalach)</label>
+                      <input
+                        type="number"
+                        id="thalach"
+                        name="thalach"
+                        class="form-control custom-input"
+                        min="0"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-section">
+                  <h3>Exercise & Stress Test Findings</h3>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label">Exercise-Induced Angina (exang)</label>
+                      <div class="btn-group w-100 segmented" role="group">
+                        <input type="radio" class="btn-check" name="exang" id="exang-0" value="0" checked />
+                        <label class="btn btn-outline-primary" for="exang-0">0</label>
+
+                        <input type="radio" class="btn-check" name="exang" id="exang-1" value="1" />
+                        <label class="btn btn-outline-primary" for="exang-1">1</label>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="oldpeak" class="form-label">ST Depression (oldpeak)</label>
+                      <input
+                        type="number"
+                        step="0.1"
+                        id="oldpeak"
+                        name="oldpeak"
+                        class="form-control custom-input"
+                        min="0"
+                        required
+                      />
+                    </div>
+
+                    <div class="col-md-4">
+                      <label class="form-label">Slope</label>
+                      <div class="btn-group w-100 segmented" role="group">
+                        <input type="radio" class="btn-check" name="slope" id="slope-1" value="1" checked />
+                        <label class="btn btn-outline-primary" for="slope-1">1</label>
+
+                        <input type="radio" class="btn-check" name="slope" id="slope-2" value="2" />
+                        <label class="btn btn-outline-primary" for="slope-2">2</label>
+
+                        <input type="radio" class="btn-check" name="slope" id="slope-3" value="3" />
+                        <label class="btn btn-outline-primary" for="slope-3">3</label>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <label class="form-label">Number of Major Vessels (ca)</label>
+                      <div class="btn-group w-100 segmented" role="group">
+                        <input type="radio" class="btn-check" name="ca" id="ca-0" value="0.0" checked />
+                        <label class="btn btn-outline-primary" for="ca-0">0</label>
+
+                        <input type="radio" class="btn-check" name="ca" id="ca-1" value="1.0" />
+                        <label class="btn btn-outline-primary" for="ca-1">1</label>
+
+                        <input type="radio" class="btn-check" name="ca" id="ca-2" value="2.0" />
+                        <label class="btn btn-outline-primary" for="ca-2">2</label>
+
+                        <input type="radio" class="btn-check" name="ca" id="ca-3" value="3.0" />
+                        <label class="btn btn-outline-primary" for="ca-3">3</label>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <label class="form-label">Thal</label>
+                      <div class="btn-group w-100 segmented" role="group">
+                        <input type="radio" class="btn-check" name="thal" id="thal-3" value="3.0" checked />
+                        <label class="btn btn-outline-primary" for="thal-3">3</label>
+
+                        <input type="radio" class="btn-check" name="thal" id="thal-6" value="6.0" />
+                        <label class="btn btn-outline-primary" for="thal-6">6</label>
+
+                        <input type="radio" class="btn-check" name="thal" id="thal-7" value="7.0" />
+                        <label class="btn btn-outline-primary" for="thal-7">7</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="submit-wrap">
+                  <button type="submit" class="btn btn-primary submit-btn">
+                    Predict Risk
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="side-card mb-4">
+              <h3>Model Output</h3>
+              <p class="side-text">
+                The result below is based on the values entered in the form.
+              </p>
+
+              {% if answer is defined %}
+                <div class="result-card {% if answer == 1 %}result-high{% else %}result-low{% endif %}">
+                  <div class="result-label">Prediction</div>
+                  <div class="result-value">
+                    {% if answer == 1 %}
+                      Heart disease indicated
+                    {% else %}
+                      No heart disease indicated
+                    {% endif %}
+                  </div>
+
+                  {% if risk is defined %}
+                    <div class="result-risk">Estimated risk: {{ risk }}%</div>
+                  {% endif %}
+                </div>
+              {% else %}
+                <div class="result-placeholder">
+                  Submit the form to see the prediction result.
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="side-card">
+              <h3>Feature Notes</h3>
+              <ul class="notes-list">
+                <li><strong>cp</strong> = chest pain type</li>
+                <li><strong>trestbps</strong> = resting blood pressure</li>
+                <li><strong>chol</strong> = cholesterol</li>
+                <li><strong>thalach</strong> = max heart rate achieved</li>
+                <li><strong>exang</strong> = exercise-induced angina</li>
+                <li><strong>oldpeak</strong> = ST depression</li>
+              </ul>
             </div>
           </div>
         </div>
-
-        <div class="row my-3">
-          <div class="col d-flex flex-column">
-            <label for="cp" class="form-label">CP: </label>
-            <div class="btn-group" role="group" aria-label="Selection options">
-              <input
-                type="radio"
-                class="btn-check"
-                name="cp"
-                id="cp-1"
-                autocomplete="off"
-                value="1"
-                checked
-              />
-              <label class="btn btn-outline-primary" for="cp-1">1</label>
-
-              <input
-                type="radio"
-                class="btn-check"
-                name="cp"
-                id="cp-2"
-                value="2"
-                autocomplete="off"
-              />
-              <label class="btn btn-outline-primary" for="cp-2">2</label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="cp"
-                id="3"
-                value="3"
-                autocomplete="off"
-              />
-              <label class="btn btn-outline-primary" for="3">3</label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="cp"
-                id="4"
-                value="4"
-                autocomplete="off"
-              />
-              <label class="btn btn-outline-primary" for="4">4</label>
-            </div>
-          </div>
-          <div class="col">
-            <label for="trestbps" class="form-label">Trestbps: </label>
-            <input
-              type="number"
-              id="trestbps"
-              name="trestbps"
-              class="form-control"
-              min="0"
-              required
-            />
-          </div>
-        </div>
-
-        <div class="row my-3">
-          <div class="col">
-            <label for="chol" class="form-label">Chol: </label>
-            <input
-              type="number"
-              id="chol"
-              name="chol"
-              class="form-control"
-              required
-            />
-          </div>
-          <div class="col d-flex flex-column">
-            <label for="fbs" class="form-label">FBS: </label>
-
-            <div class="btn-group" role="group" aria-label="Selection options">
-              <input
-                type="radio"
-                class="btn-check"
-                name="fbs"
-                id="fbs-0"
-                autocomplete="off"
-                value="0"
-                checked
-              />
-              <label class="btn btn-outline-primary" for="fbs-0">0</label>
-
-              <input
-                type="radio"
-                class="btn-check"
-                name="fbs"
-                id="fbs-1"
-                value="1"
-                autocomplete="off"
-              />
-              <label class="btn btn-outline-primary" for="fbs-1">1</label>
-            </div>
-          </div>
-        </div>
-
-        <div class="row my-3">
-          <div class="col d-flex flex-column">
-            <label for="restecg" class="form-label">Restecg: </label>
-
-            <div class="btn-group" role="group" aria-label="Selection options">
-              <input
-                type="radio"
-                class="btn-check"
-                name="restecg"
-                id="restecg-0"
-                autocomplete="off"
-                value="0"
-                checked
-              />
-              <label class="btn btn-outline-primary" for="restecg-0">0</label>
-
-              <input
-                type="radio"
-                class="btn-check"
-                name="restecg"
-                id="restecg-1"
-                value="1"
-                autocomplete="off"
-              />
-              <label class="btn btn-outline-primary" for="restecg-1">1</label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="restecg"
-                id="restecg-2"
-                value="2"
-                autocomplete="off"
-              />
-              <label class="btn btn-outline-primary" for="restecg-2">2</label>
-            </div>
-          </div>
-          <div class="col">
-            <label for="thalach" class="form-label">Thalach: </label>
-            <input
-              type="number"
-              id="thalach"
-              name="thalach"
-              class="form-control"
-              min="0"
-              required
-            />
-          </div>
-        </div>
-
-        <div class="row my-3">
-          <div class="col d-flex flex-column">
-            <label for="exang " class="form-label">Exang: </label>
-
-            <div class="btn-group" role="group" aria-label="Selection options">
-              <input
-                type="radio"
-                class="btn-check"
-                name="exang"
-                id="exang-0"
-                autocomplete="off"
-                value="0"
-                checked
-              />
-              <label class="btn btn-outline-primary" for="exang-0">0</label>
-
-              <input
-                type="radio"
-                class="btn-check"
-                name="exang"
-                id="exang-1"
-                value="1"
-                autocomplete="off"
-              />
-              <label class="btn btn-outline-primary" for="exang-1">1</label>
-            </div>
-          </div>
-          <div class="col">
-            <label for="oldpeak" class="form-label">Oldpeak: </label>
-            <input
-              type="number"
-              step="0.1"
-              id="oldpeak"
-              name="oldpeak"
-              class="form-control"
-              required
-            />
-          </div>
-        </div>
-
-        <div class="row my-3">
-          <div class="col d-flex flex-column">
-            <label for="slope" class="form-label">Slope: </label>
-
-            <div class="btn-group" role="group" aria-label="Selection options">
-              <input
-                type="radio"
-                class="btn-check"
-                name="slope"
-                id="slope-1"
-                autocomplete="off"
-                value="1"
-                checked
-              />
-              <label class="btn btn-outline-primary" for="slope-1">1</label>
-
-              <input
-                type="radio"
-                class="btn-check"
-                name="slope"
-                id="slope-2"
-                value="2"
-                autocomplete="off"
-              />
-              <label class="btn btn-outline-primary" for="slope-2">2</label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="slope"
-                id="slope-3"
-                value="3"
-                autocomplete="off"
-              />
-              <label class="btn btn-outline-primary" for="slope-3">3</label>
-            </div>
-          </div>
-          <div class="col d-flex flex-column">
-            <label for="ca" class="form-label">CA: </label>
-
-            <div class="btn-group" role="group" aria-label="Selection options">
-              <input
-                type="radio"
-                class="btn-check"
-                name="ca"
-                id="ca-0"
-                autocomplete="off"
-                value="0.0"
-                checked
-              />
-              <label class="btn btn-outline-primary" for="ca-0">0</label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="ca"
-                id="ca-1"
-                autocomplete="off"
-                value="1.0"
-              />
-              <label class="btn btn-outline-primary" for="ca-1">1</label>
-
-              <input
-                type="radio"
-                class="btn-check"
-                name="ca"
-                id="ca-2"
-                value="2.0"
-                autocomplete="off"
-              />
-              <label class="btn btn-outline-primary" for="ca-2">2</label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="ca"
-                id="ca-3"
-                value="3"
-                autocomplete="off"
-              />
-              <label class="btn btn-outline-primary" for="ca-3">3</label>
-            </div>
-          </div>
-          <div class="col d-flex flex-column">
-            <label for="thal" class="form-label">Thal: </label>
-
-            <div class="btn-group" role="group" aria-label="Selection options">
-              <input
-                type="radio"
-                class="btn-check"
-                name="thal"
-                id="thal-3"
-                autocomplete="off"
-                value="3.0"
-                checked
-              />
-              <label class="btn btn-outline-primary" for="thal-3">3</label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="thal"
-                id="thal-6"
-                autocomplete="off"
-                value="6.0"
-              />
-              <label class="btn btn-outline-primary" for="thal-6">6</label>
-
-              <input
-                type="radio"
-                class="btn-check"
-                name="thal"
-                id="thal-7"
-                value="7.0"
-                autocomplete="off"
-              />
-              <label class="btn btn-outline-primary" for="thal-7">7</label>
-            </div>
-          </div>
-        </div>
-
-        <div class="row justify-content-center mt-4">
-          <div class="col-4 text-center">
-            <button type="submit" class="btn btn-primary w-100">Submit!</button>
-          </div>
-        </div>
-      </form>
-      <br />
-      <div class="text-center">
-        <p id="num" class="mx-auto mt-5 h1">Num: <span> {{ answer }} </span></p>
       </div>
     </div>
 

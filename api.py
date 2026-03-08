@@ -15,19 +15,14 @@ def index():
 @app.route('/submit', methods=['POST'])
 def submit():
     if request.method == 'POST':
-
-        print(request)
         floats = ["oldpeak", "ca", "thal"]
 
-        
-        # Get the data from the form using the 'name' attribute from the HTML input field
         data = request.form
-
         data = data.to_dict(flat=False)
 
         feature_names = data.keys()
         feature_data = {}
-        
+
         for key in feature_names:
             if key in floats:
                 feature_data[key] = [float(data[key][0])]
@@ -35,13 +30,11 @@ def submit():
                 feature_data[key] = [int(data[key][0])]
 
         df = pd.DataFrame(feature_data)
-        
-        # You can now use 'user_input_data' in your Python code (e.g., print it, save to a database, etc.)
-        predicted = loaded_model.predict(df)
-        
-        # Return a confirmation message or another template
-        return render_template('index.html', answer=predicted[0])
-    
+
+        predicted = int(loaded_model.predict(df)[0])
+        risk = round(float(loaded_model.predict_proba(df)[0][1]) * 100, 1)
+
+        return render_template('index.html', answer=predicted, risk=risk)
 
 if __name__ == "__main__":
     app.run(port=8080, debug=True)
