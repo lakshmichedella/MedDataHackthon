@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MedData Hackathon Project</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container my-5">
+      <h1>Inputs:</h1>
+      <form action="" name="MLmodelinput" class="mt-5">
+        <div class="row my-3">
+          <div class="col">
+            <label for="age" class="form-label">Age: </label>
+            <input type="number" id="age" class="form-control" />
+          </div>
+          <div class="col">
+            <label for="sex" class="form-label">Sex: </label>
+            <select name="sex" id="sex" class="form-select">
+              <option value="1">Male</option>
+              <option value="0">Female</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row my-3">
+          <div class="col">
+            <label for="cp" class="form-label">CP: </label>
+            <select name="cp" id="cp" class="form-select">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="trestbps" class="form-label">Trestbps: </label>
+            <input type="number" id="trestbps" class="form-control" />
+          </div>
+        </div>
+
+        <div class="row my-3">
+          <div class="col">
+            <label for="chol" class="form-label">Chol: </label>
+            <input type="number" id="chol" class="form-control" />
+          </div>
+          <div class="col">
+            <label for="fbs" class="form-label">FBS: </label>
+            <select name="fbs" id="fbs" class="form-select">
+              <option value="0">0</option>
+              <option value="1">1</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row my-3">
+          <div class="col">
+            <label for="restecg" class="form-label">Restecg: </label>
+            <select name="restecg" id="restecg" class="form-select">
+              <option value="0">0</option>
+              <option value="2">2</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="thalach" class="form-label">Thalach: </label>
+            <input type="number" id="thalach" class="form-control" />
+          </div>
+        </div>
+
+        <div class="row my-3">
+          <div class="col">
+            <label for="exang" class="form-label">Exang: </label>
+            <select name="exang" id="exang" class="form-select">
+              <option value="0">0</option>
+              <option value="1">1</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="oldpeak" class="form-label">Oldpeak: </label>
+            <input type="number" id="oldpeak" class="form-control" />
+          </div>
+        </div>
+
+        <div class="row my-3">
+          <div class="col">
+            <label for="slope" class="form-label">Slope: </label>
+            <select name="slope" id="slope" class="form-select">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="ca" class="form-label">CA: </label>
+            <select name="ca" id="ca" class="form-select">
+              <option value="0.0">0</option>
+              <option value="1.0">1</option>
+              <option value="2.0">2</option>
+              <option value="3.0">3</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="thal" class="form-label">Thal: </label>
+            <select name="thal" id="thal" class="form-select">
+              <option value="3.0">3</option>
+              <option value="7.0">7</option>
+              <option value="6.0">6</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row justify-content-center mt-3">
+          <div class="col-4 text-center">
+            <button type="submit" class="btn btn-primary w-100">Submit!</button>
+          </div>
+        </div>
+      </form>
+      <br />
+      <p id="num" class="mt-5">Num:</p>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
