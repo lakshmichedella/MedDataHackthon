@@ -26,24 +26,76 @@
               required
             />
           </div>
-          <div class="col">
+          <div class="col d-flex flex-column">
             <label for="sex" class="form-label">Sex: </label>
-            <select name="sex" id="sex" class="form-select" required>
-              <option value="1">Male</option>
-              <option value="0">Female</option>
-            </select>
+            <div class="btn-group" role="group" aria-label="Selection options">
+              <input
+                type="radio"
+                class="btn-check"
+                name="sex"
+                id="male"
+                autocomplete="off"
+                value="1"
+                checked
+              />
+              <label class="btn btn-outline-primary" for="male">Male</label>
+
+              <input
+                type="radio"
+                class="btn-check"
+                name="sex"
+                id="female"
+                value="0"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-primary" for="female">Female</label>
+            </div>
           </div>
         </div>
 
         <div class="row my-3">
-          <div class="col">
+          <div class="col d-flex flex-column">
             <label for="cp" class="form-label">CP: </label>
-            <select name="cp" id="cp" class="form-select" required>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
+            <div class="btn-group" role="group" aria-label="Selection options">
+              <input
+                type="radio"
+                class="btn-check"
+                name="cp"
+                id="cp-1"
+                autocomplete="off"
+                value="1"
+                checked
+              />
+              <label class="btn btn-outline-primary" for="cp-1">1</label>
+
+              <input
+                type="radio"
+                class="btn-check"
+                name="cp"
+                id="cp-2"
+                value="2"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-primary" for="cp-2">2</label>
+              <input
+                type="radio"
+                class="btn-check"
+                name="cp"
+                id="3"
+                value="3"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-primary" for="3">3</label>
+              <input
+                type="radio"
+                class="btn-check"
+                name="cp"
+                id="4"
+                value="4"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-primary" for="4">4</label>
+            </div>
           </div>
           <div class="col">
             <label for="trestbps" class="form-label">Trestbps: </label>
@@ -52,6 +104,7 @@
               id="trestbps"
               name="trestbps"
               class="form-control"
+              min="0"
               required
             />
           </div>
@@ -68,22 +121,69 @@
               required
             />
           </div>
-          <div class="col">
+          <div class="col d-flex flex-column">
             <label for="fbs" class="form-label">FBS: </label>
-            <select name="fbs" id="fbs" class="form-select" required>
-              <option value="0">0</option>
-              <option value="1">1</option>
-            </select>
+
+            <div class="btn-group" role="group" aria-label="Selection options">
+              <input
+                type="radio"
+                class="btn-check"
+                name="fbs"
+                id="fbs-0"
+                autocomplete="off"
+                value="0"
+                checked
+              />
+              <label class="btn btn-outline-primary" for="fbs-0">0</label>
+
+              <input
+                type="radio"
+                class="btn-check"
+                name="fbs"
+                id="fbs-1"
+                value="1"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-primary" for="fbs-1">1</label>
+            </div>
           </div>
         </div>
 
         <div class="row my-3">
-          <div class="col">
+          <div class="col d-flex flex-column">
             <label for="restecg" class="form-label">Restecg: </label>
-            <select name="restecg" id="restecg" class="form-select" required>
-              <option value="0">0</option>
-              <option value="2">2</option>
-            </select>
+
+            <div class="btn-group" role="group" aria-label="Selection options">
+              <input
+                type="radio"
+                class="btn-check"
+                name="restecg"
+                id="restecg-0"
+                autocomplete="off"
+                value="0"
+                checked
+              />
+              <label class="btn btn-outline-primary" for="restecg-0">0</label>
+
+              <input
+                type="radio"
+                class="btn-check"
+                name="restecg"
+                id="restecg-1"
+                value="1"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-primary" for="restecg-1">1</label>
+              <input
+                type="radio"
+                class="btn-check"
+                name="restecg"
+                id="restecg-2"
+                value="2"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-primary" for="restecg-2">2</label>
+            </div>
           </div>
           <div class="col">
             <label for="thalach" class="form-label">Thalach: </label>
@@ -99,12 +199,31 @@
         </div>
 
         <div class="row my-3">
-          <div class="col">
-            <label for="exang" class="form-label">Exang: </label>
-            <select name="exang" id="exang" class="form-select" required>
-              <option value="0">0</option>
-              <option value="1">1</option>
-            </select>
+          <div class="col d-flex flex-column">
+            <label for="exang " class="form-label">Exang: </label>
+
+            <div class="btn-group" role="group" aria-label="Selection options">
+              <input
+                type="radio"
+                class="btn-check"
+                name="exang"
+                id="exang-0"
+                autocomplete="off"
+                value="0"
+                checked
+              />
+              <label class="btn btn-outline-primary" for="exang-0">0</label>
+
+              <input
+                type="radio"
+                class="btn-check"
+                name="exang"
+                id="exang-1"
+                value="1"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-primary" for="exang-1">1</label>
+            </div>
           </div>
           <div class="col">
             <label for="oldpeak" class="form-label">Oldpeak: </label>
@@ -120,30 +239,119 @@
         </div>
 
         <div class="row my-3">
-          <div class="col">
+          <div class="col d-flex flex-column">
             <label for="slope" class="form-label">Slope: </label>
-            <select name="slope" id="slope" class="form-select" required>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-            </select>
+
+            <div class="btn-group" role="group" aria-label="Selection options">
+              <input
+                type="radio"
+                class="btn-check"
+                name="slope"
+                id="slope-1"
+                autocomplete="off"
+                value="1"
+                checked
+              />
+              <label class="btn btn-outline-primary" for="slope-1">1</label>
+
+              <input
+                type="radio"
+                class="btn-check"
+                name="slope"
+                id="slope-2"
+                value="2"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-primary" for="slope-2">2</label>
+              <input
+                type="radio"
+                class="btn-check"
+                name="slope"
+                id="slope-3"
+                value="3"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-primary" for="slope-3">3</label>
+            </div>
           </div>
-          <div class="col">
+          <div class="col d-flex flex-column">
             <label for="ca" class="form-label">CA: </label>
-            <select name="ca" id="ca" class="form-select" required>
-              <option value="0.0">0</option>
-              <option value="1.0">1</option>
-              <option value="2.0">2</option>
-              <option value="3.0">3</option>
-            </select>
+
+            <div class="btn-group" role="group" aria-label="Selection options">
+              <input
+                type="radio"
+                class="btn-check"
+                name="ca"
+                id="ca-0"
+                autocomplete="off"
+                value="0.0"
+                checked
+              />
+              <label class="btn btn-outline-primary" for="ca-0">0</label>
+              <input
+                type="radio"
+                class="btn-check"
+                name="ca"
+                id="ca-1"
+                autocomplete="off"
+                value="1.0"
+              />
+              <label class="btn btn-outline-primary" for="ca-1">1</label>
+
+              <input
+                type="radio"
+                class="btn-check"
+                name="ca"
+                id="ca-2"
+                value="2.0"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-primary" for="ca-2">2</label>
+              <input
+                type="radio"
+                class="btn-check"
+                name="ca"
+                id="ca-3"
+                value="3"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-primary" for="ca-3">3</label>
+            </div>
           </div>
-          <div class="col">
+          <div class="col d-flex flex-column">
             <label for="thal" class="form-label">Thal: </label>
-            <select name="thal" id="thal" class="form-select" required>
-              <option value="3.0">3</option>
-              <option value="7.0">7</option>
-              <option value="6.0">6</option>
-            </select>
+
+            <div class="btn-group" role="group" aria-label="Selection options">
+              <input
+                type="radio"
+                class="btn-check"
+                name="thal"
+                id="thal-3"
+                autocomplete="off"
+                value="3.0"
+                checked
+              />
+              <label class="btn btn-outline-primary" for="thal-3">3</label>
+              <input
+                type="radio"
+                class="btn-check"
+                name="thal"
+                id="thal-6"
+                autocomplete="off"
+                value="6.0"
+              />
+              <label class="btn btn-outline-primary" for="thal-6">6</label>
+
+              <input
+                type="radio"
+                class="btn-check"
+                name="thal"
+                id="thal-7"
+                value="7.0"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-primary" for="thal-7">7</label>
+            </div>
           </div>
         </div>
 
@@ -155,7 +363,7 @@
       </form>
       <br />
       <div class="text-center">
-        <p id="num" class="mx-auto mt-5 h1">Num: {{ answer }}</p>
+        <p id="num" class="mx-auto mt-5 h1">Num: <span> {{ answer }} </span></p>
       </div>
     </div>
 
